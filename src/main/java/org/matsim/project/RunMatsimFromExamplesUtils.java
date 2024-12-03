@@ -3,6 +3,7 @@ package org.matsim.project;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
+import org.matsim.core.config.groups.ControllerConfigGroup;
 import org.matsim.core.controler.Controler;
 import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
 import org.matsim.core.scenario.ScenarioUtils;
@@ -20,11 +21,10 @@ class RunMatsimFromExamplesUtils{
 		Config config = ConfigUtils.loadConfig( url );
 		config.controller().setOverwriteFileSetting( OverwriteFileSetting.deleteDirectoryIfExists );
 
-		// ---
+		config.controller().setLastIteration(3);
 
 		Scenario scenario = ScenarioUtils.loadScenario( config );
 
-		// ---
 
 		Controler controler = new Controler( scenario );
 
